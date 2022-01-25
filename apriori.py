@@ -34,3 +34,15 @@ def find_support(
         'set_size': 1
     })
     return(L)
+
+def do_apriori(
+    data: pd.DataFrame = df,
+    min_support: int = 1,
+):
+    L = find_support(data['items'])
+    data['items'] = data['items'].apply(lambda row: set(map(str, row.split(','))))
+    L_set = set(L['items'])
+
+    return(L_set)
+
+print(do_apriori)
